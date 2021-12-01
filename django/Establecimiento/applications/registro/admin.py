@@ -7,8 +7,7 @@ admin.site.register(EstablecimientoEducativo)
 class PersonalAdmin(admin.ModelAdmin):
     list_display= (        
         'first_name',
-        'last_name',       
-        'job',        
+        'last_name',                            
         'id',                      
     )
     
