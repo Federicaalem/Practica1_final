@@ -19,52 +19,45 @@ class EstablecimientoEducativo(models.Model):#hereda de la clase models.Model
         return self.name
 
 
-
-
 class Personal(models.Model):
     """Model definition for Personal."""
     
-    CARGO = {
+    CARGO = (
         ('0', 'Docente'),
         ('1', 'No Docente'),
-    }
+    )
 
-    #""""
-    MATERIA = {
+    MATERIA = (
         ('0', 'Programacion 1'),
         ('1', 'Ingenieria de Software'),
         ('2', 'Practica 1'),
         ('3', 'Base de datos'),
-    }
-    
+    )
 
-    materia = models.CharField('Materia', max_length=50, choices = MATERIA)
-    #""""
+    OFICINA = (
+        ('0', 'Preceptoria'),
+        ('1', 'Direccion'),
+        ('2', 'Coordinadocion'),
+        ('3', 'Ayudante'),
+    )
 
     first_name = models.CharField('Nombre', max_length=50)
     last_name= models.CharField('Apellido', max_length=50)
     years = models.IntegerField('Edad')
     #perfil = models.ImageField('Imagen de Perfil', upload_to=None, height_field=None, width_field=None, max_length=None)
     #perfil = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100)
-   
     job = models.CharField('Cargo', max_length=50, choices = CARGO)
-    
-    
+
     # = models.ForeignKey(EstablecimientoEducativo, on_delete=models.CASCADE)
   
 
     #si personal es Docente, agregar la materia a la cual pertenece.(habilitar opcion)       
     #si personal es NoDocente, agregar la oficina a la cual pertenece.(habilitar opcion)
+    if job == '0':
+        materia = models.CharField('Materia', unique=True, null=True, max_length=50, blank= True, choices = MATERIA)
+    elif job == '1':
+        oficina = models.CharField('Oficina',unique=True, null=True, max_length=50, blank= True, choices = OFICINA)
     
-   # """
-   # OFICINA = {
-   #     ('0', 'Preceptoria'),
-   #     ('1', 'Direccion'),
-   #     ('2', 'Coordinadocion'),
-   #     ('3', 'Ayudante'),
-   # }
-
-   # oficina = models.CharField('Oficina', max_length=50, choices = OFICINA)
     
    
     class Meta:
