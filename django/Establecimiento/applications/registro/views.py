@@ -11,7 +11,7 @@ from django.views.generic import (
 #pagina hacia otra validando lo que hemos hecho(exitosamente).
 
 from django.urls import reverse_lazy
-from .models import Personal
+from .models import PersonalDocente, PersonalNoDocente
 #importa models significa que estamos importando desde un archivo que esta 
 #en el mismo directorio "models.py" 
 
@@ -21,34 +21,33 @@ from .models import Personal
 
 
 #READ
-class PersonalListViewAll(ListView):
-    model = Personal
-    template_name = "registro/list_All.html"
+#PERSONAL DOCENTE
+class PersonalDocenteListViewAll(ListView):
+    model = PersonalDocente
+    template_name = "registroDocente/list_All.html"
     ordering = 'last_name'
     context_object_name = 'lista'
+    paginate_by = 4
 
-class PersonalDetailView(DetailView):
-    model = Personal
-    template_name = "registro/detalle.html"
+class PersonalDocenteDetailView(DetailView):
+    model = PersonalDocente
+    template_name = "registroDocente/detalle.html"
     context_object_name = 'detalle'
 
-
-
 #vista de Exito
-
 class SuccessView(TemplateView):
-    template_name = "registro/exito.html"
+    template_name = "registroDocente/exito.html"
 
 
-class PersonalCreateView(CreateView):
-    model = Personal
-    template_name = "registro/alta.html"
+class PersonalDocenteCreateView(CreateView):
+    model = PersonalDocente
+    template_name = "registroDocente/alta.html"
     #definir campos
 
     fields = (
         'last_name',
         'first_name',
-        'job',
+        'materia',        
         'years',
         
     )
@@ -56,34 +55,111 @@ class PersonalCreateView(CreateView):
     success_url= reverse_lazy('registro_app:exito')
     #para guardar en la base de datos
     def form_valid(self, form):
-        personal= form.save(commit = False)
-        personal.full_name = personal.first_name + ' ' + personal.last_name
-        personal.save()
-        return super(PersonalCreateView, self).form_valid(form)
+        personalDocente= form.save(commit = False)
+        personalDocente.full_name = personalDocente.first_name + ' ' + personalDocente.last_name
+        personalDocente.save()
+        return super(PersonalDocenteCreateView, self).form_valid(form)
 
 
-class PersonalUpdateView(UpdateView):
-    model = Personal
-    template_name = "registro/update.html"
+class PersonalDocenteUpdateView(UpdateView):
+    model = PersonalDocente
+    template_name = "registroDocente/update.html"
 
     fields = (
         'last_name',
         'first_name',
-        'job',
+        'materia',
         'years',        
     )
 
     success_url= reverse_lazy('registro_app:exito')
     #para guardar en la base de datos
     def form_valid(self, form):
-        personal= form.save(commit = False)
-        personal.full_name = personal.first_name + ' ' + personal.last_name
-        personal.save()
-        return super(PersonalUpdateView, self).form_valid(form)
+        personalDocente= form.save(commit = False)
+        personalDocente.full_name = personalDocente.first_name + ' ' + personalDocente.last_name
+        personalDocente.save()
+        return super(PersonalDocenteUpdateView, self).form_valid(form)
 
-class PersonalDeleteView(DeleteView):
-    model = Personal
-    template_name = "registro/delete.html"
+class PersonalDocenteDeleteView(DeleteView):
+    model = PersonalDocente
+    template_name = "registroDocente/delete.html"
     success_url= reverse_lazy('registro_app:exito')
 
 
+
+
+
+
+
+
+
+
+class PersonalNoDocenteListViewAll(ListView):
+    model = PersonalNoDocente
+    template_name = "registroNoDocente/list_All.html"
+    ordering = 'last_name'
+    context_object_name = 'lista'
+    paginate_by = 4
+
+
+class PersonalNoDocenteDetailView(DetailView):
+    model = PersonalNoDocente
+    template_name = "registroNoDocente/detalle.html"
+    context_object_name = 'detalle'
+
+
+#vista de Exito
+class SuccessView(TemplateView):
+    template_name = "registroNoDocente/exito.html"
+
+
+class PersonalNoDocenteCreateView(CreateView):
+    model = PersonalNoDocente
+    template_name = "registroNoDocente/alta.html"
+    #definir campos
+
+    fields = (
+        'last_name',
+        'first_name',
+        'oficina',        
+        'years',
+        
+    )
+
+    success_url= reverse_lazy('registro_app:exito')
+    #para guardar en la base de datos
+    def form_valid(self, form):
+        personalNoDocente= form.save(commit = False)
+        personalNoDocente.full_name = personalNoDocente.first_name + ' ' + personalNoDocente.last_name
+        personalNoDocente.save()
+        return super(PersonalNoDocenteCreateView, self).form_valid(form)
+
+
+class PersonalNoDocenteUpdateView(UpdateView):
+    model = PersonalNoDocente
+    template_name = "registroNoDocente/update.html"
+
+    fields = (
+        'last_name',
+        'first_name',
+        'oficina',
+        'years',        
+    )
+
+    success_url= reverse_lazy('registro_app:exito')
+    #para guardar en la base de datos
+    def form_valid(self, form):
+        personalNoDocente= form.save(commit = False)
+        personalNoDocente.full_name = personalNoDocente.first_name + ' ' + personalNoDocente.last_name
+        personalNoDocente.save()
+        return super(PersonalNoDocenteUpdateView, self).form_valid(form)
+
+class PersonalNoDocenteDeleteView(DeleteView):
+    model = PersonalNoDocente
+    template_name = "registroNoDocente/delete.html"
+    success_url= reverse_lazy('registro_app:exito')
+
+
+
+class VistaPrincipalView(TemplateView):
+    template_name = "index.html"

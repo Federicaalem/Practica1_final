@@ -19,26 +19,56 @@ class EstablecimientoEducativo(models.Model):#hereda de la clase models.Model
         return self.name
 
 
-class Personal(models.Model):
-    """Model definition for Personal."""
+class PersonalDocente(models.Model):
+    """Model definition for PersonalDocente."""
     
-    CARGO = (
-        ('0', 'Docente'),
-        ('1', 'No Docente'),
-    )
-
     MATERIA = (
         ('0', 'Programacion 1'),
         ('1', 'Ingenieria de Software'),
         ('2', 'Practica 1'),
         ('3', 'Base de datos'),
+        ('4', 'Etica y Deontologia'),
+        ('5', 'Matematica y logica'),
+        ('3', 'Lengua y Comunicaciones'),
     )
 
+    first_name = models.CharField('Nombre', max_length=50)
+    last_name= models.CharField('Apellido', max_length=50)
+    years = models.IntegerField('Edad')
+    #perfil = models.ImageField('Imagen de Perfil', upload_to='registroDocente', height_field=None, width_field=None, max_length=None, blank= True)
+    #perfil = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100)
+    #job = models.CharField('Cargo', max_length=50, choices = CARGO)
+    materia = models.CharField('Materia', max_length=50, blank= True, choices = MATERIA)
+    # = models.ForeignKey(EstablecimientoEducativo, on_delete=models.CASCADE)
+    #si personal es Docente, agregar la materia a la cual pertenece.(habilitar opcion)       
+    #si personal es NoDocente, agregar la oficina a la cual pertenece.(habilitar opcion)
+    
+    class Meta:
+        """Meta definition for PersonalDocente."""
+
+        verbose_name = 'PersonalDocentes'
+        verbose_name_plural = 'PersonalDocente'
+
+    def __str__(self):
+        """Unicode representation of PersonalDocente."""
+        return self.last_name + ', ' + self.first_name
+
+
+
+
+
+
+
+class PersonalNoDocente(models.Model):
+    """Model definition for PersonalNoDocente."""
+    
     OFICINA = (
-        ('0', 'Preceptoria'),
-        ('1', 'Direccion'),
-        ('2', 'Coordinadocion'),
-        ('3', 'Ayudante'),
+        ('0', 'Dirección'),
+        ('1', 'Preceptoria'),      
+        ('2', 'Coordinacion'),    
+        ('3', 'Ayudantia'),   
+        ('4', 'Desbloqueo de Netbook'),
+        ('5', 'Limpieza'),   
     )
 
     first_name = models.CharField('Nombre', max_length=50)
@@ -46,30 +76,20 @@ class Personal(models.Model):
     years = models.IntegerField('Edad')
     #perfil = models.ImageField('Imagen de Perfil', upload_to=None, height_field=None, width_field=None, max_length=None)
     #perfil = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100)
-    job = models.CharField('Cargo', max_length=50, choices = CARGO)
-
+    #job = models.CharField('Cargo', max_length=50, choices = CARGO)
+    oficina = models.CharField('Oficina', unique=True, null=True, max_length=50, blank= True, choices = OFICINA)
     # = models.ForeignKey(EstablecimientoEducativo, on_delete=models.CASCADE)
-  
-
     #si personal es Docente, agregar la materia a la cual pertenece.(habilitar opcion)       
     #si personal es NoDocente, agregar la oficina a la cual pertenece.(habilitar opcion)
-    if job == '0':
-        materia = models.CharField('Materia', unique=True, null=True, max_length=50, blank= True, choices = MATERIA)
-    elif job == '1':
-        oficina = models.CharField('Oficina',unique=True, null=True, max_length=50, blank= True, choices = OFICINA)
     
-    
-   
     class Meta:
-        """Meta definition for Personal."""
+        """Meta definition for PersonalDocente."""
 
-        verbose_name = 'Personal'
-        verbose_name_plural = 'Personales'
+        verbose_name = 'PersonalNoDocentes'
+        verbose_name_plural = 'PersonalNoDocente'
 
     def __str__(self):
-        """Unicode representation of Personal."""
+        """Unicode representation of PersonalDocente."""
         return self.last_name + ', ' + self.first_name
-
-
 
 

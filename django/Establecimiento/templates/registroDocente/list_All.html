@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<h1>Lista del Personal Docente:</h1>
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th>Apellido</th>
+        <th>Nombre</th>
+        <th>Materia</th>
+      </tr>
+    </thead>
+    <tbody>
+        
+        {% for personal in lista %}
+        <tr>
+            <td>{{personal.last_name}}</td>
+            <td>{{personal.first_name}}</td>
+            <td>{{personal.get_materia_display}}</td>
+            <td>...</td>
+        </tr>
+        {% endfor %}
+            
+    
+    </tbody>
+  </table>
+  {% if is_paginated %}
+
+  <ul class="pagination">
+
+    {% if page_obj.has_previous %}
+    <li class="page-item"><a class="page-link" href="?page={{page_obj.previous_page_number}}">Anterior</a></li>
+    {% endif %}{% for pagina in paginator.page_range  %}{% ifequal pagina page_obj.number %}    
+    <li class="page-item active"><a class="page-link" href="#">{{pagina}}</a></li>
+    {% else %}
+    <li class="page-item"><a class="page-link" href="?page={{pagina}}">{{pagina}}</a></li>
+    {% endifequal %}{% endfor %}{% if page_obj.has_next %}
+      <li class="page-item"><a class="page-link" href="?page={{page_obj.next_page_number}}">Siguiente</a></li>      
+    {% endif %}
+  </ul>
+
+  {% endif %}{% endblock content %}
+    
+<!-- ENCABEZADO DE PRIMER ORDEN -->

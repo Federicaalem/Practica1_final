@@ -5,42 +5,90 @@ from . import views#el punto hace que importe todo el contenido del archivo view
 #nombre a la app
 app_name= 'registro_app'
 urlpatterns = [
+    
+    #DOCENTES
     path(
-        'listar-personal/',
-        views.PersonalListViewAll.as_view(),
-        name='listar-personal'
+        'listar-personal-docente/',
+        views.PersonalDocenteListViewAll.as_view(),        
+        name='listar-personal-docente'
     ),
 
    path(
-        'detalle/<pk>/',
-        views.PersonalDetailView.as_view(),
+        'detalle-docente/<pk>/',
+        views.PersonalDocenteDetailView.as_view(),
         name='detalle'
     ),
 
     path(
-        'exito/',
+        'exito-docente/',
         views.SuccessView.as_view(),
         name='exito'
     ),
 
     path(
-        'alta/',
-        views.PersonalCreateView.as_view(),
+        'alta-docente/',
+        views.PersonalDocenteCreateView.as_view(),
         name='alta'
     ),
 
      path(
-        'update/<pk>/',
-        views.PersonalUpdateView.as_view(),
+        'update-docente/<pk>/',
+        views.PersonalDocenteUpdateView.as_view(),
         name='update'
     ),
 
     path(
-        'delete/<pk>/',
-        views.PersonalDeleteView.as_view(),
+        'delete-docente/<pk>/',
+        views.PersonalDocenteDeleteView.as_view(),
         name='delete'
     ),
 
 
+
+
+
+    #No Docente
+    path(
+        'listar-personal-no-docente/',
+        views.PersonalNoDocenteListViewAll.as_view(),        
+        name='listar-personal-no-docente'
+    ),
+
+   path(
+        'detalle-no-docente/<pk>/',
+        views.PersonalNoDocenteDetailView.as_view(),
+        name='detalle'
+    ),
+
+    path(
+        'exito-no-docente/',
+        views.SuccessView.as_view(),
+        name='exito'
+    ),
+
+    path(
+        'alta-no-docente/',
+        views.PersonalNoDocenteCreateView.as_view(),
+        name='alta'
+    ),
+
+     path(
+        'update-no-docente/<pk>/',
+        views.PersonalNoDocenteUpdateView.as_view(),
+        name='update'
+    ),
+
+    path(
+        'delete-no-docente/<pk>/',
+        views.PersonalNoDocenteDeleteView.as_view(),
+        name='delete'
+    ),
+
+
+    path(
+        '',
+        views.VistaPrincipalView.as_view(),
+        name="index"
+    ),
 ]
 
