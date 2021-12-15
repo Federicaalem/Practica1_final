@@ -29,10 +29,17 @@ class PersonalDocenteListViewAll(ListView):
     context_object_name = 'lista'
     paginate_by = 4
 
+    def get_queryset(self):
+        palabra_clave = self.request.GET.get('kword', '')
+        lista = PersonalDocente.objects.filter(
+            last_name__icontains = palabra_clave
+        )
+        return lista
+
 class PersonalDocenteDetailView(DetailView):
     model = PersonalDocente
     template_name = "registroDocente/detalle.html"
-    context_object_name = 'detalle'
+    context_object_name = 'detalle_Docente'
 
 #vista de Exito
 class SuccessView(TemplateView):
@@ -52,7 +59,7 @@ class PersonalDocenteCreateView(CreateView):
         
     )
 
-    success_url= reverse_lazy('registro_app:exito')
+    success_url= reverse_lazy('registro_app:listar-personal-docente')
     #para guardar en la base de datos
     def form_valid(self, form):
         personalDocente= form.save(commit = False)
@@ -72,7 +79,7 @@ class PersonalDocenteUpdateView(UpdateView):
         'years',        
     )
 
-    success_url= reverse_lazy('registro_app:exito')
+    success_url= reverse_lazy('registro_app:listar-personal-docente')
     #para guardar en la base de datos
     def form_valid(self, form):
         personalDocente= form.save(commit = False)
@@ -83,7 +90,7 @@ class PersonalDocenteUpdateView(UpdateView):
 class PersonalDocenteDeleteView(DeleteView):
     model = PersonalDocente
     template_name = "registroDocente/delete.html"
-    success_url= reverse_lazy('registro_app:exito')
+    success_url= reverse_lazy('registro_app:listar-personal-docente')
 
 
 
@@ -101,11 +108,19 @@ class PersonalNoDocenteListViewAll(ListView):
     context_object_name = 'lista'
     paginate_by = 4
 
+    def get_queryset(self):
+        palabra_clave = self.request.GET.get('kword', '')
+        lista = PersonalNoDocente.objects.filter(
+            last_name__icontains = palabra_clave
+            
+        )
+        return lista
+
 
 class PersonalNoDocenteDetailView(DetailView):
     model = PersonalNoDocente
     template_name = "registroNoDocente/detalle.html"
-    context_object_name = 'detalle'
+    context_object_name = 'detalle_NoDocente'
 
 
 #vista de Exito
@@ -126,7 +141,7 @@ class PersonalNoDocenteCreateView(CreateView):
         
     )
 
-    success_url= reverse_lazy('registro_app:exito')
+    success_url= reverse_lazy('registro_app:listar-personal-no-docente')
     #para guardar en la base de datos
     def form_valid(self, form):
         personalNoDocente= form.save(commit = False)
@@ -146,7 +161,7 @@ class PersonalNoDocenteUpdateView(UpdateView):
         'years',        
     )
 
-    success_url= reverse_lazy('registro_app:exito')
+    success_url= reverse_lazy('registro_app:listar-personal-no-docente')
     #para guardar en la base de datos
     def form_valid(self, form):
         personalNoDocente= form.save(commit = False)
@@ -157,7 +172,7 @@ class PersonalNoDocenteUpdateView(UpdateView):
 class PersonalNoDocenteDeleteView(DeleteView):
     model = PersonalNoDocente
     template_name = "registroNoDocente/delete.html"
-    success_url= reverse_lazy('registro_app:exito')
+    success_url= reverse_lazy('registro_app:listar-personal-no-docente')
 
 
 

@@ -15,5 +15,19 @@ class PersonalDocenteForm(forms.ModelForm):
             'id',
             )
 
+class PersonalNoDocenteForm(forms.ModelForm):
+    """Form definition for PersonalDocente."""
+
+    class Meta:
+        """Meta definition for PersonalDocenteform."""
+
+        model = PersonalNoDocente
+        fields = (
+            'first_name',
+            'last_name',
+            'oficina',
+            'id',
+            )
+
        
 

@@ -16,7 +16,7 @@ urlpatterns = [
    path(
         'detalle-docente/<pk>/',
         views.PersonalDocenteDetailView.as_view(),
-        name='detalle'
+        name='detalle_Docente'
     ),
 
     path(
@@ -28,19 +28,19 @@ urlpatterns = [
     path(
         'alta-docente/',
         views.PersonalDocenteCreateView.as_view(),
-        name='alta'
+        name='alta_Docente'
     ),
 
      path(
         'update-docente/<pk>/',
         views.PersonalDocenteUpdateView.as_view(),
-        name='update'
+        name='update_Docente'
     ),
 
     path(
         'delete-docente/<pk>/',
         views.PersonalDocenteDeleteView.as_view(),
-        name='delete'
+        name='delete_Docente'
     ),
 
 
@@ -57,7 +57,7 @@ urlpatterns = [
    path(
         'detalle-no-docente/<pk>/',
         views.PersonalNoDocenteDetailView.as_view(),
-        name='detalle'
+        name='detalle_NoDocente'
     ),
 
     path(
@@ -69,19 +69,19 @@ urlpatterns = [
     path(
         'alta-no-docente/',
         views.PersonalNoDocenteCreateView.as_view(),
-        name='alta'
+        name='alta_NoDocente'
     ),
 
      path(
         'update-no-docente/<pk>/',
         views.PersonalNoDocenteUpdateView.as_view(),
-        name='update'
+        name='update_NoDocente'
     ),
 
     path(
         'delete-no-docente/<pk>/',
         views.PersonalNoDocenteDeleteView.as_view(),
-        name='delete'
+        name='delete_NoDocente'
     ),
 
 
