@@ -10,36 +10,45 @@ class EstablecimientoEducativo(models.Model):#hereda de la clase models.Model
     
     #metaInformacion# informacion extra del modelo
     class Meta:
-         verbose_name = 'Area'
-         verbose_name_plural= 'Areas'
+         verbose_name = 'Materia'
+         verbose_name_plural= 'Materias'
          ordering = ['name']
     
     #metodo
     def __str__(self):
         return self.name
 
+class EstablecimientoEducativo2(models.Model):#hereda de la clase models.Model
+    #definimos los atributos/campos
+    #cmd tipo-> mchar
+    name = models.CharField('Nombre', max_length=50)
+    short_name = models.CharField('Nombre corto', max_length=50)
+    
+    #metaInformacion# informacion extra del modelo
+    class Meta:
+         verbose_name = 'Oficina'
+         verbose_name_plural= 'Oficinas'
+         ordering = ['name']
+    
+    #metodo
+    def __str__(self):
+        return self.name
+
+ 
 
 class PersonalDocente(models.Model):
     """Model definition for PersonalDocente."""
     
-    MATERIA = (
-        ('0', 'Programacion 1'),
-        ('1', 'Ingenieria de Software'),
-        ('2', 'Practica 1'),
-        ('3', 'Base de datos'),
-        ('4', 'Etica y Deontologia'),
-        ('5', 'Matematica y logica'),
-        ('3', 'Lengua y Comunicaciones'),
-    )
-
+    
     first_name = models.CharField('Nombre', max_length=50)
     last_name= models.CharField('Apellido', max_length=50)
     years = models.IntegerField('Edad')
     #perfil = models.ImageField('Imagen de Perfil', upload_to='registroDocente', height_field=None, width_field=None, max_length=None, blank= True)
+    # materia = models.ForeignKey(Materia, on_delete=models.CASCADE)
     #perfil = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100)
     #job = models.CharField('Cargo', max_length=50, choices = CARGO)
-    materia = models.CharField('Materia', unique=False, max_length=50, blank= True, choices = MATERIA)
-    # = models.ForeignKey(EstablecimientoEducativo, on_delete=models.CASCADE)
+    #materia = models.CharField('Materia', unique=False, max_length=50, blank= True, choices = MATERIA)
+    materia = models.ForeignKey(EstablecimientoEducativo, null=True,  on_delete=models.CASCADE)
     #si personal es Docente, agregar la materia a la cual pertenece.(habilitar opcion)       
     #si personal es NoDocente, agregar la oficina a la cual pertenece.(habilitar opcion)
     
@@ -62,23 +71,16 @@ class PersonalDocente(models.Model):
 class PersonalNoDocente(models.Model):
     """Model definition for PersonalNoDocente."""
     
-    OFICINA = (
-        ('0', 'Dirección'),
-        ('1', 'Preceptoria'),      
-        ('2', 'Coordinacion'),    
-        ('3', 'Ayudantia'),   
-        ('4', 'Desbloqueo de Netbook'),
-        ('5', 'Limpieza'),   
-    )
 
     first_name = models.CharField('Nombre', max_length=50)
     last_name= models.CharField('Apellido', max_length=50)
     years = models.IntegerField('Edad')
     #perfil = models.ImageField('Imagen de Perfil', upload_to=None, height_field=None, width_field=None, max_length=None)
     #perfil = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100)
+    
     #job = models.CharField('Cargo', max_length=50, choices = CARGO)
-    oficina = models.CharField('Oficina', unique=False, null=True, max_length=50, blank= True, choices = OFICINA)
-    # = models.ForeignKey(EstablecimientoEducativo, on_delete=models.CASCADE)
+    # oficina = models.CharField('Oficina', unique=False, null=True, max_length=50, blank= True, choices = OFICINA)
+    oficina = models.ForeignKey(EstablecimientoEducativo2, null=True, on_delete=models.CASCADE)
     #si personal es Docente, agregar la materia a la cual pertenece.(habilitar opcion)       
     #si personal es NoDocente, agregar la oficina a la cual pertenece.(habilitar opcion)
     

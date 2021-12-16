@@ -3,12 +3,14 @@ from .models import *
 
 # Register your models here.
 admin.site.register(EstablecimientoEducativo)
+admin.site.register(EstablecimientoEducativo2)
+
 
 class PersonalDocenteAdmin(admin.ModelAdmin):
     list_display= (        
         'first_name',
         'last_name',
-        'materia',        
+        'materia',
         'id',                              
     )
     
@@ -21,7 +23,7 @@ class PersonalNoDocenteAdmin(admin.ModelAdmin):
     list_display= (        
         'first_name',
         'last_name',
-        'oficina',        
+        'oficina',              
         'id',                              
     )
     

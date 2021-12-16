@@ -13,7 +13,7 @@
   </div>
 
   <div class="row">
-    <h1>Lista del Personal No Docente:</h1>
+    <h1>Lista de Personal No Docente:</h1>
   </div>
 
   <div class="row">
@@ -32,7 +32,7 @@
           <tr>
               <td>{{personal.last_name}}</td>
               <td>{{personal.first_name}}</td>
-              <td>{{personal.get_oficina_display}}</td>
+              <td>{{personal.oficina}}</td>
               <td>
                 <a  class="btn btn-info" href="{% url 'registro_app:detalle_NoDocente' personal.id %}">Info</a>
                 <a  class="btn btn-info" href="{% url 'registro_app:update_NoDocente' personal.id %}">Modificar</a>
