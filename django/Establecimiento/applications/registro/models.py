@@ -43,15 +43,10 @@ class PersonalDocente(models.Model):
     first_name = models.CharField('Nombre', max_length=50)
     last_name= models.CharField('Apellido', max_length=50)
     years = models.IntegerField('Edad')
-    #perfil = models.ImageField('Imagen de Perfil', upload_to='registroDocente', height_field=None, width_field=None, max_length=None, blank= True)
-    # materia = models.ForeignKey(Materia, on_delete=models.CASCADE)
-
-    #job = models.CharField('Cargo', max_length=50, choices = CARGO)
-    #materia = models.CharField('Materia', unique=False, max_length=50, blank= True, choices = MATERIA)
+    
     materia = models.ForeignKey(EstablecimientoEducativo, null=True,  on_delete=models.CASCADE)
     perfil = models.ImageField('Imagen de Perfil', upload_to='registro', height_field=None, width_field=None, max_length=None )
-    #si personal es Docente, agregar la materia a la cual pertenece.(habilitar opcion)       
-    #si personal es NoDocente, agregar la oficina a la cual pertenece.(habilitar opcion)
+
     
     class Meta:
         """Meta definition for PersonalDocente."""
@@ -65,10 +60,6 @@ class PersonalDocente(models.Model):
 
 
 
-
-
-
-
 class PersonalNoDocente(models.Model):
     """Model definition for PersonalNoDocente."""
     
@@ -76,14 +67,10 @@ class PersonalNoDocente(models.Model):
     first_name = models.CharField('Nombre', max_length=50)
     last_name= models.CharField('Apellido', max_length=50)
     years = models.IntegerField('Edad')
-    #perfil = models.ImageField('Imagen de Perfil', upload_to=None, height_field=None, width_field=None, max_length=None)
-    #perfil = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100)    
-    #job = models.CharField('Cargo', max_length=50, choices = CARGO)
-    # oficina = models.CharField('Oficina', unique=False, null=True, max_length=50, blank= True, choices = OFICINA)
+    
     oficina = models.ForeignKey(EstablecimientoEducativo2, null=True, on_delete=models.CASCADE)
     perfil = models.ImageField('Imagen de Perfil', upload_to='registro', height_field=None, width_field=None, max_length=None)
-    #si personal es Docente, agregar la materia a la cual pertenece.(habilitar opcion)       
-    #si personal es NoDocente, agregar la oficina a la cual pertenece.(habilitar opcion)
+    
     
     class Meta:
         """Meta definition for PersonalDocente."""
