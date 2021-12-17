@@ -54,7 +54,8 @@ class PersonalDocenteCreateView(CreateView):
     fields = (
         'last_name',
         'first_name',
-        'materia',        
+        'materia',  
+        'perfil',      
         'years',
         
     )
@@ -76,7 +77,8 @@ class PersonalDocenteUpdateView(UpdateView):
         'last_name',
         'first_name',
         'materia',
-        'years',        
+        'years',  
+        'perfil',      
     )
 
     success_url= reverse_lazy('registro_app:listar-personal-docente')
@@ -138,6 +140,7 @@ class PersonalNoDocenteCreateView(CreateView):
         'first_name',
         'oficina',        
         'years',
+        'perfil',
         
     )
 
@@ -158,7 +161,8 @@ class PersonalNoDocenteUpdateView(UpdateView):
         'last_name',
         'first_name',
         'oficina',
-        'years',        
+        'years',    
+        'perfil',     
     )
 
     success_url= reverse_lazy('registro_app:listar-personal-no-docente')

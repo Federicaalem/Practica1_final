@@ -24,6 +24,7 @@
           <th>Nombre</th>
           <th>Oficina</th>
           <th>Acciones</th>
+          
         </tr>
       </thead>
       <tbody>
@@ -33,6 +34,7 @@
               <td>{{personal.last_name}}</td>
               <td>{{personal.first_name}}</td>
               <td>{{personal.oficina}}</td>
+              
               <td>
                 <a  class="btn btn-info" href="{% url 'registro_app:detalle_NoDocente' personal.id %}">Info</a>
                 <a  class="btn btn-info" href="{% url 'registro_app:update_NoDocente' personal.id %}">Modificar</a>

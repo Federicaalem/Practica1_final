@@ -22,7 +22,7 @@
           <th>Apellido</th>
           <th>Nombre</th>
           <th>Materia</th>
-          <th>Acciones</th>
+          <th>Acciones</th>          
         </tr>
       </thead>
       <tbody>
@@ -32,6 +32,7 @@
               <td>{{personal.last_name}}</td>
               <td>{{personal.first_name}}</td>
               <td>{{personal.materia}}</td>
+              
               <td>
                 <a  class="btn btn-info" href="{% url 'registro_app:detalle_Docente' personal.id %}">Info</a>
                 <a  class="btn btn-info" href="{% url 'registro_app:update_Docente' personal.id %}">Modificar</a>

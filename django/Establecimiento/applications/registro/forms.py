@@ -12,6 +12,7 @@ class PersonalDocenteForm(forms.ModelForm):
             'first_name',
             'last_name',
             'materia',
+            'perfil',
             'id',
             )
 
@@ -26,6 +27,7 @@ class PersonalNoDocenteForm(forms.ModelForm):
             'first_name',
             'last_name',
             'oficina',
+            'perfil',
             'id',
             )
 
