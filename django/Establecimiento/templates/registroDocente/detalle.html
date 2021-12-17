@@ -10,8 +10,8 @@
         <div class="card" style="width:400px">
 
             
-            {% if detalle_Docente_personal.perfil %}
-            <img class="card-img-top" src="{{ detalle_Docente_personal.perfil }}" alt="Card image">
+            {% if detalle_Docente.perfil %}
+            <img class="card-img-top" src="{{ detalle_Docente.perfil.url }}" alt="Card image">
             {% else %}
             <img class="card-img-top" src="{% static 'img/default.jpeg'%}" >
             {% endif %}
