@@ -1,0 +1,17 @@
+body{
+    background-image: url(https://cdn.pixabay.com/photo/2015/12/01/15/43/black-1072366_960_720.jpg);
+}
+
+td{
+    color: blanchedalmond;
+}
+.h11 {
+    color: #17a2b8;
+}
+
+label{
+    color: cornsilk;
+}
+input, select{
+    text-decoration-color: turquoise;
+}

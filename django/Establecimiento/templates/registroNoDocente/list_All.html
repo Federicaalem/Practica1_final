@@ -6,14 +6,14 @@
     <form class="form-inline" method="GET"> {% csrf_token %}
       
       <input type="text" class="form-control mr-sm-2" placeholder="Inserte texto" id="kword" name="kword">
-      
+      <link rel="stylesheet" href="{% static 'css/listAll.css' %}">
       <button type="submit" class="btn btn-primary  mr-sm-2">Buscar</button>
       <a  class="btn btn-info" href="{% url 'registro_app:alta_NoDocente' %}">(+)Agregar</a>
     </form>
   </div>
 
   <div class="row">
-    <h1>Lista de Personal No Docente:</h1>
+    <h1 class="h11">Lista de Personal No Docente:</h1>
   </div>
 
   <div class="row">
