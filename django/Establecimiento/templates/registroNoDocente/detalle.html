@@ -11,14 +11,14 @@
         <div class="card" style="width:400px">
 
             {% if detalle_NoDocente_personal.perfil %}
-            <img class="card-img-top" src="{{ detalle_NoDocente_personal.perfil.url }}" alt="Card image">
+            <img class="card-img-top" src="{{ detalle_NoDocente_personal.perfil.url }}">
             {% else %}
             <img class="card-img-top" src="{% static 'img/default.jpeg' %}" alt="Card image">
             {% endif %}
 
                 
 
-            <img class="card-img-top" src="img_perfil.png" alt="Card image">
+            <img class="card-img-top" src="img_perfil.png" >
             <div class="card-body">
                 <h4 class="card-title"> {{detalle_NoDocente.last_name}}, {{detalle_NoDocente.first_name}}</h4>
                 <p class="card-text">

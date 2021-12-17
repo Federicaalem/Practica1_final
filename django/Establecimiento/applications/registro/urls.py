@@ -90,5 +90,7 @@ urlpatterns = [
         views.VistaPrincipalView.as_view(),
         name="index"
     ),
+
+     
 ]
 

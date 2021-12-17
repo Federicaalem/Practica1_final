@@ -102,7 +102,6 @@ class PersonalDocenteDeleteView(DeleteView):
 
 
 
-
 class PersonalNoDocenteListViewAll(ListView):
     model = PersonalNoDocente
     template_name = "registroNoDocente/list_All.html"

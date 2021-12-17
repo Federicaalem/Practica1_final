@@ -1,11 +1,17 @@
 {% extends 'base.html' %}{% load static %}{% block content %}
+
 <div class="container">
     <div class="row">
-        <h1>Actualizacion de Personal No Docente</h1>
+        <h1>Modificar datos - Personal No Docente</h1>
     </div>
 
-<form method="post">{% csrf_token %} {{form.as_p}}
-    <button type= "submit">Modificar</button>
-</form>
+    <div class="row">
+        
+        <form method="post" enctype="multipart/form-data">{% csrf_token %} {{form.as_p}}
+            <button type="submit">Modificar</button>
+        </form>
+    </div>
+
 </div>
+
 {% endblock content %}
